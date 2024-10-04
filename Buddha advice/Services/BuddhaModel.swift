@@ -9,4 +9,5 @@ import Foundation
 struct BuddhaModel {
     var imageName: String
     var quote: String
+    var number: String
 }

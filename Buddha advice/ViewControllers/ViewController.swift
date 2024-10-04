@@ -8,7 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    private let textLabel = UILabel()
+    private let numberLabel = UILabel()
+    private let quoteLabel = UILabel()
     private let horizontalStack = UIStackView()
     private let mainStack = UIStackView()
     private let monkImage: CustomImage = CustomImage(
@@ -32,7 +33,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTextLabel()
+        setupNumberLabel()
+        setupQuoteLabel()
         setupHorizontalStack()
         setupMainStack()
         setupView()
@@ -50,28 +52,28 @@ extension ViewController {
     func addAction() {
         //настройка nextButton
         let nextButtonAction = UIAction { _ in
-            let imageName = self.buddhaDataManager.getNextBuddha().imageName
-            let buddhaText = self.buddhaDataManager.getCurrentBuddha().quote
-            self.monkImage.updateImage(imageName)
-            self.textLabel.text = buddhaText
+            let buddhaData = self.buddhaDataManager.getNextBuddha()
+            self.monkImage.updateImage(buddhaData.imageName)
+            self.quoteLabel.text = buddhaData.quote
+            self.numberLabel.text = buddhaData.number
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
         
         //настройка lastButton
         let lastButtonAction = UIAction { _ in
-            let imageName = self.buddhaDataManager.getPreviousBuddha().imageName
-            let buddhaText = self.buddhaDataManager.getCurrentBuddha().quote
-            self.monkImage.updateImage(imageName)
-            self.textLabel.text = buddhaText
+            let buddhaData = self.buddhaDataManager.getPreviousBuddha()
+            self.monkImage.updateImage(buddhaData.imageName)
+            self.quoteLabel.text = buddhaData.quote
+            self.numberLabel.text = buddhaData.number
         }
         lastButton.addAction(lastButtonAction, for: .touchUpInside)
         
         //настройка firstButton
         let firstButtonAction = UIAction { _ in
-            let imageName = self.buddhaDataManager.getFirstBuddha().imageName
-            let buddhaText = self.buddhaDataManager.getCurrentBuddha().quote
-            self.monkImage.updateImage(imageName)
-            self.textLabel.text = buddhaText
+            let buddhaData = self.buddhaDataManager.getFirstBuddha()
+            self.monkImage.updateImage(buddhaData.imageName)
+            self.quoteLabel.text = buddhaData.quote
+            self.numberLabel.text = buddhaData.number
         }
         firstButton.addAction(firstButtonAction, for: .touchUpInside)
     }
@@ -80,13 +82,20 @@ extension ViewController {
         view.backgroundColor = .white
     }
     
-    private func setupTextLabel() {
-        textLabel.textColor = .black
-        textLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        textLabel.text = buddhaDataManager.getCurrentBuddha().quote
-        textLabel.textAlignment = .justified
-        textLabel.numberOfLines = 5
-        textLabel.lineBreakMode = .byWordWrapping
+    private func setupNumberLabel() {
+        numberLabel.textColor = .black
+        numberLabel.font = .systemFont(ofSize: 30, weight: .bold)
+        numberLabel.text = "\(buddhaDataManager.getCurrentBuddha().number)"
+        numberLabel.textAlignment = .center
+    }
+    
+    private func setupQuoteLabel() {
+        quoteLabel.textColor = .black
+        quoteLabel.font = .systemFont(ofSize: 17, weight: .semibold)
+        quoteLabel.text = buddhaDataManager.getCurrentBuddha().quote
+        quoteLabel.textAlignment = .justified
+        quoteLabel.numberOfLines = 5
+        quoteLabel.lineBreakMode = .byWordWrapping
     }
     
     private func setupHorizontalStack() {
@@ -105,8 +114,9 @@ extension ViewController {
         mainStack.spacing = 10
         mainStack.alignment = .fill
         
+        mainStack.addArrangedSubview(numberLabel)
         mainStack.addArrangedSubview(monkImage)
-        mainStack.addArrangedSubview(textLabel)
+        mainStack.addArrangedSubview(quoteLabel)
         mainStack.addArrangedSubview(horizontalStack)
         mainStack.addArrangedSubview(firstButton)
     }
@@ -117,7 +127,7 @@ extension ViewController {
     private func setupLayout() {
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         monkImage.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        quoteLabel.translatesAutoresizingMaskIntoConstraints = false
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -127,9 +137,11 @@ extension ViewController {
             mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
             mainStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             
+            numberLabel.heightAnchor.constraint(equalToConstant: 50),
+            
             monkImage.heightAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.8125),
             
-            textLabel.topAnchor.constraint(equalTo: monkImage.bottomAnchor, constant: 20),
+            quoteLabel.topAnchor.constraint(equalTo: monkImage.bottomAnchor, constant: 20),
             
             horizontalStack.heightAnchor.constraint(equalToConstant: 50),
             
