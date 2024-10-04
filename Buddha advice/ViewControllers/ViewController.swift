@@ -94,7 +94,7 @@ extension ViewController {
         quoteLabel.font = .systemFont(ofSize: 17, weight: .semibold)
         quoteLabel.text = buddhaDataManager.getCurrentBuddha().quote
         quoteLabel.textAlignment = .justified
-        quoteLabel.numberOfLines = 5
+        quoteLabel.numberOfLines = 6
         quoteLabel.lineBreakMode = .byWordWrapping
     }
     
