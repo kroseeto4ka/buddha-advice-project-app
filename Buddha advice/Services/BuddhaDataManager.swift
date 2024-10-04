@@ -5,7 +5,6 @@
 //  Created by Никита Сорочинский on 03.10.2024.
 //
 
-import Foundation
 class BuddhaDataManager {
     private var buddhas: [BuddhaModel] = []
     private var currentIndex = 0

@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupNumberLabel()
         setupQuoteLabel()
         setupHorizontalStack()
@@ -50,7 +51,6 @@ class ViewController: UIViewController {
 // MARK: - Setup View
 extension ViewController {
     func addAction() {
-        //настройка nextButton
         let nextButtonAction = UIAction { _ in
             let buddhaData = self.buddhaDataManager.getNextBuddha()
             self.monkImage.updateImage(buddhaData.imageName)
@@ -59,7 +59,6 @@ extension ViewController {
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
         
-        //настройка lastButton
         let lastButtonAction = UIAction { _ in
             let buddhaData = self.buddhaDataManager.getPreviousBuddha()
             self.monkImage.updateImage(buddhaData.imageName)
@@ -68,7 +67,6 @@ extension ViewController {
         }
         lastButton.addAction(lastButtonAction, for: .touchUpInside)
         
-        //настройка firstButton
         let firstButtonAction = UIAction { _ in
             let buddhaData = self.buddhaDataManager.getFirstBuddha()
             self.monkImage.updateImage(buddhaData.imageName)
