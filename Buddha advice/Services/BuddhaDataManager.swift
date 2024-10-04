@@ -10,8 +10,9 @@ class BuddhaDataManager {
     private var buddhas: [BuddhaModel] = []
     private var currentIndex = 0
     
-    init(buddhas: [BuddhaModel]) {
-        self.buddhas = buddhas
+    init() {
+        let buddhaRepo = BuddhaManager()
+        buddhas = buddhaRepo.getData()
     }
     
     func getCurrentBuddha() -> BuddhaModel {
@@ -34,6 +35,16 @@ class BuddhaDataManager {
             currentIndex -= 1
         }
         return getCurrentBuddha()
+    }
+    
+    func getFirstBuddha() -> BuddhaModel {
+        currentIndex = 0
+        return getCurrentBuddha()
+    }
+    
+    func updateData() {
+        let buddhaRepo = BuddhaManager()
+        buddhas = buddhaRepo.getData()
     }
 }
 
