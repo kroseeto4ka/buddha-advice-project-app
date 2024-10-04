@@ -23,7 +23,7 @@ struct BuddhaManager {
             BuddhaModel(imageName: Images.image5,
                         quote: Quotes.quote5,
                         number: Advices.advice5),
-            BuddhaModel(imageName: Images.image7,
+            BuddhaModel(imageName: Images.image6,
                         quote: Quotes.quote6,
                         number: Advices.advice6),
             BuddhaModel(imageName: Images.image7,
