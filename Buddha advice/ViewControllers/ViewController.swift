@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         cornerRadius: 20,
         isShadowRequired: true)
     let lastButton = CustomButton(buttonSelfColor: .black,
-                                          buttonTextColor: .white,
-                                          buttonText: "Last",
-                                          isShadowRequired: false)
+                                  buttonTextColor: .white,
+                                  buttonText: "Last",
+                                  isShadowRequired: false)
     let nextButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Next",
