@@ -5,7 +5,7 @@
 //  Created by Никита Сорочинский on 03.10.2024.
 //
 
-class BuddhaDataManager {
+class BuddhaDataManager: IBuddha {
     private var buddhas: [BuddhaModel] = []
     private var currentIndex = 0
     
@@ -38,11 +38,6 @@ class BuddhaDataManager {
     func getFirstBuddha() -> BuddhaModel {
         currentIndex = 0
         return getCurrentBuddha()
-    }
-    
-    func updateData() {
-        let buddhaRepo = BuddhaManager()
-        buddhas = buddhaRepo.getData()
     }
 }
 

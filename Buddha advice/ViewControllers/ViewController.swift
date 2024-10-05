@@ -33,7 +33,7 @@ class ViewController: UIViewController {
                                            buttonText: "First",
                                            isShadowRequired: false)
     
-    private let buddhaDataManager = BuddhaDataManager(buddhas: BuddhaManager().getData())
+    var buddhaDataManager: IBuddha?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,26 +56,26 @@ class ViewController: UIViewController {
 extension ViewController {
     func addAction() {
         let nextButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager.getNextBuddha()
-            self.monkImage.updateImage(buddhaData.imageName)
-            self.quoteLabel.text = buddhaData.quote
-            self.numberLabel.text = buddhaData.number
+            let buddhaData = self.buddhaDataManager?.getNextBuddha()
+            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+            self.quoteLabel.text = buddhaData?.quote
+            self.numberLabel.text = buddhaData?.number
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
         
         let lastButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager.getPreviousBuddha()
-            self.monkImage.updateImage(buddhaData.imageName)
-            self.quoteLabel.text = buddhaData.quote
-            self.numberLabel.text = buddhaData.number
+            let buddhaData = self.buddhaDataManager?.getPreviousBuddha()
+            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+            self.quoteLabel.text = buddhaData?.quote
+            self.numberLabel.text = buddhaData?.number
         }
         lastButton.addAction(lastButtonAction, for: .touchUpInside)
         
         let firstButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager.getFirstBuddha()
-            self.monkImage.updateImage(buddhaData.imageName)
-            self.quoteLabel.text = buddhaData.quote
-            self.numberLabel.text = buddhaData.number
+            let buddhaData = self.buddhaDataManager?.getFirstBuddha()
+            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+            self.quoteLabel.text = buddhaData?.quote
+            self.numberLabel.text = buddhaData?.number
         }
         firstButton.addAction(firstButtonAction, for: .touchUpInside)
     }
@@ -87,14 +87,14 @@ extension ViewController {
     private func setupNumberLabel() {
         numberLabel.textColor = .black
         numberLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        numberLabel.text = "\(buddhaDataManager.getCurrentBuddha().number)"
+        numberLabel.text = buddhaDataManager?.getCurrentBuddha().number
         numberLabel.textAlignment = .center
     }
     
     private func setupQuoteLabel() {
         quoteLabel.textColor = .black
         quoteLabel.font = .systemFont(ofSize: 17, weight: .semibold)
-        quoteLabel.text = buddhaDataManager.getCurrentBuddha().quote
+        quoteLabel.text = buddhaDataManager?.getCurrentBuddha().quote
         quoteLabel.textAlignment = .justified
         quoteLabel.numberOfLines = 6
         quoteLabel.lineBreakMode = .byWordWrapping
@@ -157,5 +157,9 @@ extension ViewController {
 extension ViewController {
     enum Images {
         static let standartImage: String = "buddhaDesert"
+    }
+    
+    enum Texts {
+        static let errorText: String = "Error"
     }
 }
