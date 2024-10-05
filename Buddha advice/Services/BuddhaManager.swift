@@ -31,7 +31,16 @@ struct BuddhaManager {
                         number: Advices.advice7),
             BuddhaModel(imageName: Images.image8,
                         quote: Quotes.quote8,
-                        number: Advices.advice8)
+                        number: Advices.advice8),
+            BuddhaModel(imageName: Images.image9,
+                        quote: Quotes.quote9,
+                        number: Advices.advice9),
+            BuddhaModel(imageName: Images.image10,
+                        quote: Quotes.quote10,
+                        number: Advices.advice10),
+            BuddhaModel(imageName: Images.image11,
+                        quote: Quotes.quote11,
+                        number: Advices.advice11)
         ]
     }
 }
@@ -47,6 +56,9 @@ extension BuddhaManager {
         static let advice6 = "Совет №6"
         static let advice7 = "Совет №7"
         static let advice8 = "Совет №8"
+        static let advice9 = "Совет №9"
+        static let advice10 = "Совет №10"
+        static let advice11 = "Совет №11"
     }
     
     enum Quotes {
@@ -58,6 +70,9 @@ extension BuddhaManager {
         static let quote6 = "Ты будешь наказан не за свой гнев; ты будешь наказан своим гневом."
         static let quote7 = "Прежде чем выпрямлять горбатого, сделай нечто более трудное — расправь свои плечи."
         static let quote8 = "Ваши страдания вызваны вашим сопротивлением тому, что есть."
+        static let quote9 = "Большая гордость приведёт к падению, а смирение — к победе."
+        static let quote10 = "Всё, чем мы являемся, — это результат того, о чём мы думаем. Разум — это всё. Мысли материальны."
+        static let quote11 = "Цепляться за чувство гнева — это как пить яд и ожидать, что вместо вас умрёт другой человек."
     }
     
     enum Images {
@@ -69,5 +84,8 @@ extension BuddhaManager {
         static let image6 = "buddhaRainforest"
         static let image7 = "buddhaFuji"
         static let image8 = "buddhaFactory"
+        static let image9 = "buddhaSwamp"
+        static let image10 = "buddhaUnderwater"
+        static let image11 = "buddhaCave"
     }
 }
