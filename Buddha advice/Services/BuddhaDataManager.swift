@@ -9,9 +9,8 @@ class BuddhaDataManager {
     private var buddhas: [BuddhaModel] = []
     private var currentIndex = 0
     
-    init() {
-        let buddhaRepo = BuddhaManager()
-        buddhas = buddhaRepo.getData()
+    init(buddhas: [BuddhaModel]) {
+        self.buddhas = buddhas
     }
     
     func getCurrentBuddha() -> BuddhaModel {

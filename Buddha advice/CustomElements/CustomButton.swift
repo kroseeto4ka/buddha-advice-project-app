@@ -15,7 +15,7 @@ class CustomButton: UIButton {
     init(buttonSelfColor: UIColor,
          buttonTextColor: UIColor,
          buttonText: String,
-         isShadowRequired: Bool) {
+         isShadowRequired: Bool = false) {
         super.init(frame: .zero)
         setupButton(buttonSelfColor, buttonTextColor, buttonText, isShadowRequired)
     }

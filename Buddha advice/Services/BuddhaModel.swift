@@ -6,7 +6,7 @@
 //
 
 struct BuddhaModel {
-    var imageName: String
-    var quote: String
-    var number: String
+    let imageName: String
+    let quote: String
+    let number: String
 }

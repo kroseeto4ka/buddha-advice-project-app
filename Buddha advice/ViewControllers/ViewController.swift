@@ -10,26 +10,30 @@ import UIKit
 class ViewController: UIViewController {
     private let numberLabel = UILabel()
     private let quoteLabel = UILabel()
+    
     private let horizontalStack = UIStackView()
     private let mainStack = UIStackView()
-    private let monkImage: CustomImage = CustomImage(
-        imageName: Images.standartImage,
-        cornerRadius: 20,
-        isShadowRequired: true)
+    
+    private let monkImage = CustomImage(imageName: Images.standartImage,
+                                        cornerRadius: 20,
+                                        isShadowRequired: true)
+    
     let lastButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Last",
                                   isShadowRequired: false)
+    
     let nextButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Next",
                                   isShadowRequired: false)
+    
     private let firstButton = CustomButton(buttonSelfColor: .systemRed,
                                            buttonTextColor: .white,
                                            buttonText: "First",
                                            isShadowRequired: false)
     
-    private let buddhaDataManager = BuddhaDataManager()
+    private let buddhaDataManager = BuddhaDataManager(buddhas: BuddhaManager().getData())
     
     override func viewDidLoad() {
         super.viewDidLoad()

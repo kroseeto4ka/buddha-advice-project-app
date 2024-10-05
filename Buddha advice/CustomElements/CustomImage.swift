@@ -22,16 +22,13 @@ class CustomImage: UIView {
         setupLayout()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        let shadowPath = UIBezierPath(rect: bounds)
-        layer.shadowPath = shadowPath.cgPath
-    }
-    
     func updateImage(_ imageName: String) {
         image.image = UIImage(named: imageName)
     }
-    
+}
+
+//MARK: - Setup view
+extension CustomImage{
     private func setupImage(_ imageName: String, _ cornerRadius: CGFloat) {
         image.image = UIImage(named: imageName)
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -48,10 +45,12 @@ class CustomImage: UIView {
             layer.shadowOpacity = 1
             layer.shadowRadius = cornerRadius
         }
-        
         addSubview(image)
     }
-    
+}
+
+//MARK: - Setup Layout
+extension CustomImage{
     private func setupLayout() {
         image.translatesAutoresizingMaskIntoConstraints = false
         
@@ -61,5 +60,11 @@ class CustomImage: UIView {
             image.leadingAnchor.constraint(equalTo: leadingAnchor),
             image.trailingAnchor.constraint(equalTo: trailingAnchor)
             ])
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let shadowPath = UIBezierPath(rect: bounds)
+        layer.shadowPath = shadowPath.cgPath
     }
 }
