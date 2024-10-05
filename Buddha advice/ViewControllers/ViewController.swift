@@ -134,18 +134,19 @@ extension ViewController {
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            mainStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
-            mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
-            mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
-            mainStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
+            mainStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            mainStack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
             
             numberLabel.heightAnchor.constraint(equalToConstant: 50),
             
             monkImage.heightAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.8125),
+            monkImage.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 30),
             
-            quoteLabel.topAnchor.constraint(equalTo: monkImage.bottomAnchor, constant: 20),
+            quoteLabel.topAnchor.constraint(greaterThanOrEqualTo: monkImage.bottomAnchor, constant: 30),
             
-            horizontalStack.heightAnchor.constraint(equalToConstant: 50),
+            horizontalStack.heightAnchor.constraint(equalToConstant: 80),
             
             firstButton.heightAnchor.constraint(equalTo: horizontalStack.heightAnchor)
         ])

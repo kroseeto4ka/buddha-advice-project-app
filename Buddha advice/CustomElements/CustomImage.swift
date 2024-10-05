@@ -41,7 +41,7 @@ extension CustomImage{
     private func setupImageView(_ isShadowRequired: Bool, _ cornerRadius: CGFloat) {
         if isShadowRequired {
             layer.shadowColor = UIColor.black.cgColor
-            layer.shadowOffset = CGSize(width: 15, height: 15)
+            layer.shadowOffset = CGSize(width: 10, height: 10)
             layer.shadowOpacity = 1
             layer.shadowRadius = cornerRadius
         }
