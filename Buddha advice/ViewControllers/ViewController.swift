@@ -18,12 +18,17 @@ class ViewController: UIViewController {
                                         cornerRadius: 20,
                                         isShadowRequired: true)
     
-    let lastButton = CustomButton(buttonSelfColor: .black,
+    private let lastButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Last",
                                   isShadowRequired: false)
     
-    let nextButton = CustomButton(buttonSelfColor: .black,
+    private let randomButton = CustomButton(buttonSelfColor: .black,
+                                            buttonTextColor: .white,
+                                            buttonText: "Random",
+                                            isShadowRequired: false)
+    
+    private let nextButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Next",
                                   isShadowRequired: false)
@@ -62,6 +67,14 @@ extension ViewController {
             self.numberLabel.text = buddhaData?.number
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
+        
+        let randomButtonAction = UIAction { _ in
+            let buddhaData = self.buddhaDataManager?.getRandomBuddha()
+            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+            self.quoteLabel.text = buddhaData?.quote
+            self.numberLabel.text = buddhaData?.number
+        }
+        randomButton.addAction(randomButtonAction, for: .touchUpInside)
         
         let lastButtonAction = UIAction { _ in
             let buddhaData = self.buddhaDataManager?.getPreviousBuddha()
@@ -107,6 +120,7 @@ extension ViewController {
         horizontalStack.alignment = .fill
         
         horizontalStack.addArrangedSubview(lastButton)
+        horizontalStack.addArrangedSubview(randomButton)
         horizontalStack.addArrangedSubview(nextButton)
     }
     

@@ -39,5 +39,11 @@ class BuddhaDataManager: IBuddha {
         currentIndex = 0
         return getCurrentBuddha()
     }
+    
+    func getRandomBuddha() -> BuddhaModel {
+        let randomIndex = Int.random(in: 0...(buddhas.count - 1))
+        currentIndex = randomIndex
+        return getCurrentBuddha()
+    }
 }
 

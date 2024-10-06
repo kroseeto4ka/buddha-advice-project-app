@@ -34,7 +34,7 @@ extension CustomButton {
                              _ buttonText: String,
                              _ isShadowRequired: Bool){
         setTitle(buttonText, for: .normal)
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
         setTitleColor(buttonTextColor, for: .normal)
         backgroundColor = buttonSelfColor
         layer.cornerRadius = 20
