@@ -40,7 +40,28 @@ struct BuddhaManager {
                         number: Advices.advice10),
             BuddhaModel(imageName: Images.image11,
                         quote: Quotes.quote11,
-                        number: Advices.advice11)
+                        number: Advices.advice11),
+            BuddhaModel(imageName: Images.image12,
+                        quote: Quotes.quote12,
+                        number: Advices.advice12),
+            BuddhaModel(imageName: Images.image13,
+                        quote: Quotes.quote13,
+                        number: Advices.advice13),
+            BuddhaModel(imageName: Images.image14,
+                        quote: Quotes.quote14,
+                        number: Advices.advice14),
+            BuddhaModel(imageName: Images.image15,
+                        quote: Quotes.quote15,
+                        number: Advices.advice15),
+            BuddhaModel(imageName: Images.image16,
+                        quote: Quotes.quote16,
+                        number: Advices.advice16),
+            BuddhaModel(imageName: Images.image17,
+                        quote: Quotes.quote17,
+                        number: Advices.advice17),
+            BuddhaModel(imageName: Images.image18,
+                        quote: Quotes.quote18,
+                        number: Advices.advice18)
         ]
     }
 }
@@ -59,6 +80,13 @@ extension BuddhaManager {
         static let advice9 = "Совет №9"
         static let advice10 = "Совет №10"
         static let advice11 = "Совет №11"
+        static let advice12 = "Совет №12"
+        static let advice13 = "Совет №13"
+        static let advice14 = "Совет №14"
+        static let advice15 = "Совет №15"
+        static let advice16 = "Совет №16"
+        static let advice17 = "Совет №17"
+        static let advice18 = "Совет №18"
     }
     
     enum Quotes {
@@ -73,6 +101,13 @@ extension BuddhaManager {
         static let quote9 = "Большая гордость приведёт к падению, а смирение — к победе."
         static let quote10 = "Всё, чем мы являемся, — это результат того, о чём мы думаем. Разум — это всё. Мысли материальны."
         static let quote11 = "Цепляться за чувство гнева — это как пить яд и ожидать, что вместо вас умрёт другой человек."
+        static let quote12 = "Счастье — это не удачное сочетание внешних обстоятельств. Это просто состояние вашего ума."
+        static let quote13 = "Тот может, кто думает, что может."
+        static let quote14 = "Терпение — это противоядие от гнева."
+        static let quote15 = "Тот, кто сидит в одиночестве, спит в одиночестве, бродит в одиночестве, тот, кто деятелен и сдерживает себя сам, пусть радуется в лесной чаще."
+        static let quote16 = "Ни на земле, ни на небе, ни в океане, ни в горах не отыскать места, где бы человека не смогла победить смерть."
+        static let quote17 = "Даже ливень из золотых монет не принесет удовлетворения страстям. Мудр тот, кто знает: страсти болезненны и мало от них радости."
+        static let quote18 = "Приятно смотреть на благородных; быть в их обществе — благо. Да будет всегда счастлив тот, кто не видит глупцов."
     }
     
     enum Images {
@@ -87,5 +122,12 @@ extension BuddhaManager {
         static let image9 = "buddhaSwamp"
         static let image10 = "buddhaUnderwater"
         static let image11 = "buddhaCave"
+        static let image12 = "buddhaOasis"
+        static let image13 = "buddhaSavanna"
+        static let image14 = "buddhaRockyBeach"
+        static let image15 = "buddhaRiver"
+        static let image16 = "buddhaPines"
+        static let image17 = "buddhaField"
+        static let image18 = "buddhaCorals"
     }
 }
