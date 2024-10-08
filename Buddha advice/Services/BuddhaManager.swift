@@ -8,27 +8,6 @@
 struct BuddhaManager {
     func getData() -> [BuddhaModel] {
         return [
-            BuddhaModel(imageName: Images.image1,
-                        quote: Quotes.quote1,
-                        number: Advices.advice1),
-            BuddhaModel(imageName: Images.image2,
-                        quote: Quotes.quote2,
-                        number: Advices.advice2),
-            BuddhaModel(imageName: Images.image3,
-                        quote: Quotes.quote3,
-                        number: Advices.advice3),
-            BuddhaModel(imageName: Images.image4,
-                        quote: Quotes.quote4, number:
-                            Advices.advice4),
-            BuddhaModel(imageName: Images.image5,
-                        quote: Quotes.quote5,
-                        number: Advices.advice5),
-            BuddhaModel(imageName: Images.image6,
-                        quote: Quotes.quote6,
-                        number: Advices.advice6),
-            BuddhaModel(imageName: Images.image7,
-                        quote: Quotes.quote7,
-                        number: Advices.advice7),
             BuddhaModel(imageName: Images.image8,
                         quote: Quotes.quote8,
                         number: Advices.advice8),
@@ -61,7 +40,28 @@ struct BuddhaManager {
                         number: Advices.advice17),
             BuddhaModel(imageName: Images.image18,
                         quote: Quotes.quote18,
-                        number: Advices.advice18)
+                        number: Advices.advice18),
+            BuddhaModel(imageName: Images.image1,
+                        quote: Quotes.quote1,
+                        number: Advices.advice1),
+            BuddhaModel(imageName: Images.image2,
+                        quote: Quotes.quote2,
+                        number: Advices.advice2),
+            BuddhaModel(imageName: Images.image3,
+                        quote: Quotes.quote3,
+                        number: Advices.advice3),
+            BuddhaModel(imageName: Images.image4,
+                        quote: Quotes.quote4, number:
+                            Advices.advice4),
+            BuddhaModel(imageName: Images.image5,
+                        quote: Quotes.quote5,
+                        number: Advices.advice5),
+            BuddhaModel(imageName: Images.image6,
+                        quote: Quotes.quote6,
+                        number: Advices.advice6),
+            BuddhaModel(imageName: Images.image7,
+                        quote: Quotes.quote7,
+                        number: Advices.advice7)
         ]
     }
 }
@@ -69,24 +69,24 @@ struct BuddhaManager {
 // MARK: - Constants
 extension BuddhaManager {
     enum Advices {
-        static let advice1 = "Совет №1"
-        static let advice2 = "Совет №2"
-        static let advice3 = "Совет №3"
-        static let advice4 = "Совет №4"
-        static let advice5 = "Совет №5"
-        static let advice6 = "Совет №6"
-        static let advice7 = "Совет №7"
-        static let advice8 = "Совет №8"
-        static let advice9 = "Совет №9"
-        static let advice10 = "Совет №10"
-        static let advice11 = "Совет №11"
-        static let advice12 = "Совет №12"
-        static let advice13 = "Совет №13"
-        static let advice14 = "Совет №14"
-        static let advice15 = "Совет №15"
-        static let advice16 = "Совет №16"
-        static let advice17 = "Совет №17"
-        static let advice18 = "Совет №18"
+        static let advice1 = 1
+        static let advice2 = 2
+        static let advice3 = 3
+        static let advice4 = 4
+        static let advice5 = 5
+        static let advice6 = 6
+        static let advice7 = 7
+        static let advice8 = 8
+        static let advice9 = 9
+        static let advice10 = 10
+        static let advice11 = 11
+        static let advice12 = 12
+        static let advice13 = 13
+        static let advice14 = 14
+        static let advice15 = 15
+        static let advice16 = 16
+        static let advice17 = 17
+        static let advice18 = 18
     }
     
     enum Quotes {

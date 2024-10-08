@@ -10,7 +10,12 @@ class BuddhaDataManager: IBuddha {
     private var currentIndex = 0
     
     init(buddhas: [BuddhaModel]) {
-        self.buddhas = buddhas
+        let sortedBuddhas = sortBuddhas(buddhas)
+        
+        for buddha in sortedBuddhas {
+            print("\(buddha.number) - \(buddha.imageName)")
+        }
+        self.buddhas = sortedBuddhas
     }
     
     func getCurrentBuddha() -> BuddhaModel {
@@ -44,6 +49,11 @@ class BuddhaDataManager: IBuddha {
         let randomIndex = Int.random(in: 0...(buddhas.count - 1))
         currentIndex = randomIndex
         return getCurrentBuddha()
+    }
+    
+    func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
+        let newArray = array.sorted(by: <)
+        return newArray
     }
 }
 

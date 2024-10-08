@@ -64,7 +64,7 @@ extension ViewController {
             let buddhaData = self.buddhaDataManager?.getNextBuddha()
             self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
             self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = buddhaData?.number
+            self.numberLabel.text = "Совет №\(buddhaData?.number ?? -1)"
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
         
@@ -72,7 +72,7 @@ extension ViewController {
             let buddhaData = self.buddhaDataManager?.getRandomBuddha()
             self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
             self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = buddhaData?.number
+            self.numberLabel.text = "Совет №\(buddhaData?.number ?? -1)"
         }
         randomButton.addAction(randomButtonAction, for: .touchUpInside)
         
@@ -80,7 +80,7 @@ extension ViewController {
             let buddhaData = self.buddhaDataManager?.getPreviousBuddha()
             self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
             self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = buddhaData?.number
+            self.numberLabel.text = "Совет №\(buddhaData?.number ?? -1)"
         }
         lastButton.addAction(lastButtonAction, for: .touchUpInside)
         
@@ -88,7 +88,7 @@ extension ViewController {
             let buddhaData = self.buddhaDataManager?.getFirstBuddha()
             self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
             self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = buddhaData?.number
+            self.numberLabel.text = "Совет №\(buddhaData?.number ?? -1)"
         }
         firstButton.addAction(firstButtonAction, for: .touchUpInside)
     }
@@ -100,7 +100,7 @@ extension ViewController {
     private func setupNumberLabel() {
         numberLabel.textColor = .black
         numberLabel.font = .systemFont(ofSize: 30, weight: .bold)
-        numberLabel.text = buddhaDataManager?.getCurrentBuddha().number
+        numberLabel.text = "Совет №\(buddhaDataManager?.getCurrentBuddha().number ?? -1)"
         numberLabel.textAlignment = .center
     }
     

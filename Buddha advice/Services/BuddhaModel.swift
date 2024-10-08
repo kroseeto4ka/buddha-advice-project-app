@@ -8,5 +8,31 @@
 struct BuddhaModel {
     let imageName: String
     let quote: String
-    let number: String
+    let number: Int
+}
+
+// MARK: - Comparable
+extension BuddhaModel: Comparable {
+    static func < (lhs: BuddhaModel, rhs: BuddhaModel) -> Bool {
+        lhs.number < rhs.number
+    }
+    
+    static func > (lhs: BuddhaModel, rhs: BuddhaModel) -> Bool {
+        lhs.number > rhs.number
+    }
+    
+    static func <= (lhs: BuddhaModel, rhs: BuddhaModel) -> Bool {
+        lhs.number <= rhs.number
+    }
+    
+    static func >= (lhs: BuddhaModel, rhs: BuddhaModel) -> Bool {
+        lhs.number >= rhs.number
+    }
+}
+
+// MARK: - CustomStringConvertible
+extension BuddhaModel: CustomStringConvertible {
+    var description: String {
+        "Порядок: \(number), Название картинки: \(imageName)"
+    }
 }
