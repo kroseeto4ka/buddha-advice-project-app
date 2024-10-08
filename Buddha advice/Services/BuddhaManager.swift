@@ -10,85 +10,64 @@ struct BuddhaManager {
         return [
             BuddhaModel(imageName: Images.image8,
                         quote: Quotes.quote8,
-                        number: Advices.advice8),
+                        number: 8),
             BuddhaModel(imageName: Images.image9,
                         quote: Quotes.quote9,
-                        number: Advices.advice9),
+                        number: 9),
             BuddhaModel(imageName: Images.image10,
                         quote: Quotes.quote10,
-                        number: Advices.advice10),
+                        number: 10),
             BuddhaModel(imageName: Images.image11,
                         quote: Quotes.quote11,
-                        number: Advices.advice11),
+                        number: 11),
             BuddhaModel(imageName: Images.image12,
                         quote: Quotes.quote12,
-                        number: Advices.advice12),
+                        number: 12),
             BuddhaModel(imageName: Images.image13,
                         quote: Quotes.quote13,
-                        number: Advices.advice13),
+                        number: 13),
             BuddhaModel(imageName: Images.image14,
                         quote: Quotes.quote14,
-                        number: Advices.advice14),
+                        number: 14),
             BuddhaModel(imageName: Images.image15,
                         quote: Quotes.quote15,
-                        number: Advices.advice15),
+                        number: 15),
             BuddhaModel(imageName: Images.image16,
                         quote: Quotes.quote16,
-                        number: Advices.advice16),
+                        number: 16),
             BuddhaModel(imageName: Images.image17,
                         quote: Quotes.quote17,
-                        number: Advices.advice17),
+                        number: 17),
             BuddhaModel(imageName: Images.image18,
                         quote: Quotes.quote18,
-                        number: Advices.advice18),
+                        number: 18),
             BuddhaModel(imageName: Images.image1,
                         quote: Quotes.quote1,
-                        number: Advices.advice1),
+                        number: 1),
             BuddhaModel(imageName: Images.image2,
                         quote: Quotes.quote2,
-                        number: Advices.advice2),
+                        number: 2),
             BuddhaModel(imageName: Images.image3,
                         quote: Quotes.quote3,
-                        number: Advices.advice3),
+                        number: 3),
             BuddhaModel(imageName: Images.image4,
-                        quote: Quotes.quote4, number:
-                            Advices.advice4),
+                        quote: Quotes.quote4,
+                        number: 4),
             BuddhaModel(imageName: Images.image5,
                         quote: Quotes.quote5,
-                        number: Advices.advice5),
+                        number: 5),
             BuddhaModel(imageName: Images.image6,
                         quote: Quotes.quote6,
-                        number: Advices.advice6),
+                        number: 6),
             BuddhaModel(imageName: Images.image7,
                         quote: Quotes.quote7,
-                        number: Advices.advice7)
+                        number: 7)
         ]
     }
 }
 
 // MARK: - Constants
 extension BuddhaManager {
-    enum Advices {
-        static let advice1 = 1
-        static let advice2 = 2
-        static let advice3 = 3
-        static let advice4 = 4
-        static let advice5 = 5
-        static let advice6 = 6
-        static let advice7 = 7
-        static let advice8 = 8
-        static let advice9 = 9
-        static let advice10 = 10
-        static let advice11 = 11
-        static let advice12 = 12
-        static let advice13 = 13
-        static let advice14 = 14
-        static let advice15 = 15
-        static let advice16 = 16
-        static let advice17 = 17
-        static let advice18 = 18
-    }
-    
     enum Quotes {
         static let quote1 = "Отпусти то, что не принадлежит тебе. Освободившись, ты надолго обретёшь счастье и благо."
         static let quote2 = "Победи себя и выиграешь тысячи битв."
