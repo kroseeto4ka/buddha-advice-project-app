@@ -51,9 +51,8 @@ class BuddhaDataManager: IBuddha {
         return getCurrentBuddha()
     }
     
-    func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
-        let newArray = array.sorted(by: <)
-        return newArray
+    private func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
+        array.sorted(by: <)
     }
 }
 

@@ -61,36 +61,30 @@ class ViewController: UIViewController {
 extension ViewController {
     func addAction() {
         let nextButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager?.getNextBuddha()
-            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
-            self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+            self.setupAction(self.buddhaDataManager?.getNextBuddha())
         }
         nextButton.addAction(nextButtonAction, for: .touchUpInside)
         
         let randomButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager?.getRandomBuddha()
-            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
-            self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+            self.setupAction(self.buddhaDataManager?.getRandomBuddha())
         }
         randomButton.addAction(randomButtonAction, for: .touchUpInside)
         
         let lastButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager?.getPreviousBuddha()
-            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
-            self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+            self.setupAction(self.buddhaDataManager?.getPreviousBuddha())
         }
         lastButton.addAction(lastButtonAction, for: .touchUpInside)
         
         let firstButtonAction = UIAction { _ in
-            let buddhaData = self.buddhaDataManager?.getFirstBuddha()
-            self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
-            self.quoteLabel.text = buddhaData?.quote
-            self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+            self.setupAction(self.buddhaDataManager?.getFirstBuddha())
         }
         firstButton.addAction(firstButtonAction, for: .touchUpInside)
+    }
+    
+    private func setupAction(_ buddhaData: BuddhaModel?) {
+        self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+        self.quoteLabel.text = buddhaData?.quote
+        self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
     }
     
     private func setupView() {

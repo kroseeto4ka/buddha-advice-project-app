@@ -5,7 +5,7 @@
 //  Created by Никита Сорочинский on 03.10.2024.
 //
 
-struct BuddhaManager {
+class BuddhaManager: IBuddhaManager {
     func getData() -> [BuddhaModel] {
         return [
             BuddhaModel(imageName: Images.image8,
