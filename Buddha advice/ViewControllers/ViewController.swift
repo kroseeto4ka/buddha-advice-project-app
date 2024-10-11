@@ -43,6 +43,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupDelegate()
+        
         setupNumberLabel()
         setupQuoteLabel()
         setupHorizontalStack()
@@ -51,42 +53,12 @@ class ViewController: UIViewController {
         
         view.addSubview(mainStack)
         
-        addAction()
-        
         setupLayout()
     }
 }
 
 // MARK: - Setup View
 extension ViewController {
-    func addAction() {
-        let nextButtonAction = UIAction { _ in
-            self.setupAction(self.buddhaDataManager?.getNextBuddha())
-        }
-        nextButton.addAction(nextButtonAction, for: .touchUpInside)
-        
-        let randomButtonAction = UIAction { _ in
-            self.setupAction(self.buddhaDataManager?.getRandomBuddha())
-        }
-        randomButton.addAction(randomButtonAction, for: .touchUpInside)
-        
-        let lastButtonAction = UIAction { _ in
-            self.setupAction(self.buddhaDataManager?.getPreviousBuddha())
-        }
-        lastButton.addAction(lastButtonAction, for: .touchUpInside)
-        
-        let firstButtonAction = UIAction { _ in
-            self.setupAction(self.buddhaDataManager?.getFirstBuddha())
-        }
-        firstButton.addAction(firstButtonAction, for: .touchUpInside)
-    }
-    
-    private func setupAction(_ buddhaData: BuddhaModel?) {
-        self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
-        self.quoteLabel.text = buddhaData?.quote
-        self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
-    }
-    
     private func setupView() {
         view.backgroundColor = .white
     }
@@ -171,5 +143,36 @@ extension ViewController {
     enum Texts {
         static let errorText: String = "Error"
         static let adviceNumber: String = "Совет №"
+    }
+}
+
+// MARK: - ICustomButtonDelegate
+extension ViewController: ICustomButtonDelegate {
+    func pressedButton(_ button: UIButton) {
+        switch button {
+        case firstButton:
+            self.setupAction(self.buddhaDataManager?.getFirstBuddha())
+        case lastButton:
+            self.setupAction(self.buddhaDataManager?.getPreviousBuddha())
+        case nextButton:
+            self.setupAction(self.buddhaDataManager?.getNextBuddha())
+        case randomButton:
+            self.setupAction(self.buddhaDataManager?.getRandomBuddha())
+        default:
+            break
+        }
+    }
+    
+    private func setupAction(_ buddhaData: BuddhaModel?) {
+        self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
+        self.quoteLabel.text = buddhaData?.quote
+        self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+    }
+    
+    private func setupDelegate() {
+        firstButton.delegate = self
+        lastButton.delegate = self
+        randomButton.delegate = self
+        nextButton.delegate = self
     }
 }
