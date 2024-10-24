@@ -9,13 +9,17 @@ import UIKit
 
 class CustomImage: UIView {
     private let image = UIImageView()
-    
+    var elementName: String?
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(imageName: String, cornerRadius: CGFloat, isShadowRequired: Bool){
+    init(imageName: String,
+         cornerRadius: CGFloat,
+         isShadowRequired: Bool,
+         elementName: String){
+        self.elementName = elementName
         super.init(frame: .zero)
         setupImage(imageName, cornerRadius)
         setupImageView(isShadowRequired, cornerRadius)

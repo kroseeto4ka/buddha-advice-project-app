@@ -16,27 +16,32 @@ class ViewController: UIViewController {
     
     private let monkImage = CustomImage(imageName: Images.standartImage,
                                         cornerRadius: 20,
-                                        isShadowRequired: true)
+                                        isShadowRequired: true,
+                                        elementName: "monkImage")
     
     private let lastButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Last",
-                                  isShadowRequired: false)
+                                  isShadowRequired: false,
+                                  elementName: "lastButton")
     
     private let randomButton = CustomButton(buttonSelfColor: .black,
                                             buttonTextColor: .white,
                                             buttonText: "Random",
-                                            isShadowRequired: false)
+                                            isShadowRequired: false,
+                                            elementName: "randomButton")
     
     private let nextButton = CustomButton(buttonSelfColor: .black,
                                   buttonTextColor: .white,
                                   buttonText: "Next",
-                                  isShadowRequired: false)
+                                  isShadowRequired: false,
+                                  elementName: "nextButton")
     
     private let firstButton = CustomButton(buttonSelfColor: .systemRed,
                                            buttonTextColor: .white,
                                            buttonText: "First",
-                                           isShadowRequired: false)
+                                           isShadowRequired: false,
+                                           elementName: "firstButton")
     
     var buddhaDataManager: IBuddha?
     
@@ -50,7 +55,16 @@ class ViewController: UIViewController {
         setupHorizontalStack()
         setupMainStack()
         setupView()
-        
+        elementsAmount(monkImage,
+                             lastButton,
+                             randomButton,
+                             nextButton,
+                             firstButton)
+        elementsNames(monkImage,
+                      lastButton,
+                      randomButton,
+                      nextButton,
+                      firstButton)
         view.addSubview(mainStack)
         
         setupLayout()
@@ -101,6 +115,13 @@ extension ViewController {
         mainStack.addArrangedSubview(quoteLabel)
         mainStack.addArrangedSubview(horizontalStack)
         mainStack.addArrangedSubview(firstButton)
+    }
+    
+    private func setupDelegate() {
+        firstButton.delegate = self
+        lastButton.delegate = self
+        randomButton.delegate = self
+        nextButton.delegate = self
     }
 }
 
@@ -168,11 +189,29 @@ extension ViewController: ICustomButtonDelegate {
         self.quoteLabel.text = buddhaData?.quote
         self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
     }
+}
+
+//MARK: - Casting debug
+extension ViewController {
+    func elementsAmount(_ views: UIView...){
+        var counter = 0
+        for view in views {
+            if (view is UIButton){
+                counter += 1
+            }
+        }
+        print("\(counter) examples of UIButton")
+    }
     
-    private func setupDelegate() {
-        firstButton.delegate = self
-        lastButton.delegate = self
-        randomButton.delegate = self
-        nextButton.delegate = self
+    func elementsNames(_ views: UIView...){
+        for view in views {
+            if let button = view as? CustomButton {
+                print(button.elementName ?? "Button Error")
+            }
+            
+            if let image = view as? CustomImage {
+                print(image.elementName ?? "Image Error")
+            }
+        }
     }
 }

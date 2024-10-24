@@ -8,6 +8,7 @@ import UIKit
 
 class CustomButton: UIButton {
     var delegate: ICustomButtonDelegate?
+    var elementName: String?
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
@@ -17,7 +18,9 @@ class CustomButton: UIButton {
     init(buttonSelfColor: UIColor,
          buttonTextColor: UIColor,
          buttonText: String,
-         isShadowRequired: Bool = false) {
+         isShadowRequired: Bool = false,
+         elementName: String) {
+        self.elementName = elementName
         super.init(frame: .zero)
         setupButton(buttonSelfColor, buttonTextColor, buttonText, isShadowRequired)
         addAction()
