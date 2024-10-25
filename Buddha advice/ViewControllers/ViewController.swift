@@ -55,12 +55,12 @@ class ViewController: UIViewController {
         setupHorizontalStack()
         setupMainStack()
         setupView()
-        elementsAmount(monkImage,
+        view.elementsAmount(monkImage,
                              lastButton,
                              randomButton,
                              nextButton,
                              firstButton)
-        elementsNames(monkImage,
+        view.elementsNames(monkImage,
                       lastButton,
                       randomButton,
                       nextButton,
@@ -188,30 +188,5 @@ extension ViewController: ICustomButtonDelegate {
         self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
         self.quoteLabel.text = buddhaData?.quote
         self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
-    }
-}
-
-//MARK: - Casting debug
-extension ViewController {
-    func elementsAmount(_ views: UIView...){
-        var counter = 0
-        for view in views {
-            if (view is UIButton){
-                counter += 1
-            }
-        }
-        print("\(counter) examples of UIButton")
-    }
-    
-    func elementsNames(_ views: UIView...){
-        for view in views {
-            if let button = view as? CustomButton {
-                print(button.elementName ?? "Button Error")
-            }
-            
-            if let image = view as? CustomImage {
-                print(image.elementName ?? "Image Error")
-            }
-        }
     }
 }
