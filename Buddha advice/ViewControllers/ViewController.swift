@@ -48,14 +48,21 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupDelegate()
-        
+        setupView()
+    }
+}
+
+// MARK: - Setup View
+extension ViewController {
+    private func setupView() {
         setupNumberLabel()
         setupQuoteLabel()
         setupHorizontalStack()
         setupMainStack()
-        setupView()
+        
+        view.backgroundColor = .white
+        
         view.elementsAmount(monkImage,
                              lastButton,
                              randomButton,
@@ -67,15 +74,7 @@ class ViewController: UIViewController {
                       nextButton,
                       firstButton)
         view.addSubview(mainStack)
-        
         setupLayout()
-    }
-}
-
-// MARK: - Setup View
-extension ViewController {
-    private func setupView() {
-        view.backgroundColor = .white
     }
     
     private func setupNumberLabel() {
