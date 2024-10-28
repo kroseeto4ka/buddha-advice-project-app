@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     private let numberLabel = UILabel()
+    private let imageNameLabel = UILabel()
     private let quoteLabel = UILabel()
     
     private let horizontalStack = UIStackView()
@@ -194,7 +195,12 @@ extension ViewController: ICustomButtonDelegate {
 extension ViewController {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let imageName = self.buddhaDataManager?.getCurrentBuddha().imageName ?? "Error"
-        quoteLabel.text = imageName
+        let imagequote = self.buddhaDataManager?.getCurrentBuddha().quote ?? "Error"
+        if quoteLabel.text == imageName {
+            quoteLabel.text = imagequote
+        } else {
+            quoteLabel.text = imageName
+        }
         super.touchesBegan(touches, with: event)
     }
 }
