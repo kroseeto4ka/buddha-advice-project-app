@@ -190,3 +190,11 @@ extension ViewController: ICustomButtonDelegate {
         self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
     }
 }
+
+extension ViewController {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let imageName = self.buddhaDataManager?.getCurrentBuddha().imageName ?? "Error"
+        quoteLabel.text = imageName
+        super.touchesBegan(touches, with: event)
+    }
+}
