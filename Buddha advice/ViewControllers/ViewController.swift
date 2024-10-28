@@ -94,6 +94,14 @@ extension ViewController {
         quoteLabel.lineBreakMode = .byWordWrapping
     }
     
+    private func setupImageNameLabel() {
+        imageNameLabel.textColor = .systemGray3
+        imageNameLabel.font = .systemFont(ofSize: 7, weight: .light)
+        imageNameLabel.text = buddhaDataManager?.getCurrentBuddha().quote
+        imageNameLabel.textAlignment = .justified
+        imageNameLabel.isHidden = true
+    }
+    
     private func setupHorizontalStack() {
         horizontalStack.axis = .horizontal
         horizontalStack.distribution = .fillEqually
@@ -113,6 +121,7 @@ extension ViewController {
         
         mainStack.addArrangedSubview(numberLabel)
         mainStack.addArrangedSubview(monkImage)
+        mainStack.addArrangedSubview(imageNameLabel)
         mainStack.addArrangedSubview(quoteLabel)
         mainStack.addArrangedSubview(horizontalStack)
         mainStack.addArrangedSubview(firstButton)
@@ -132,6 +141,7 @@ extension ViewController {
         mainStack.translatesAutoresizingMaskIntoConstraints = false
         monkImage.translatesAutoresizingMaskIntoConstraints = false
         quoteLabel.translatesAutoresizingMaskIntoConstraints = false
+        imageNameLabel.translatesAutoresizingMaskIntoConstraints = false
         horizontalStack.translatesAutoresizingMaskIntoConstraints = false
         firstButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -146,9 +156,11 @@ extension ViewController {
             monkImage.heightAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.8125),
             monkImage.topAnchor.constraint(equalTo: numberLabel.bottomAnchor, constant: 30),
             
-            quoteLabel.topAnchor.constraint(greaterThanOrEqualTo: monkImage.bottomAnchor, constant: 30),
+            imageNameLabel.topAnchor.constraint(greaterThanOrEqualTo: monkImage.bottomAnchor, constant: 20),
             
-            horizontalStack.heightAnchor.constraint(equalToConstant: 80),
+            quoteLabel.topAnchor.constraint(greaterThanOrEqualTo: imageNameLabel.bottomAnchor, constant: 15),
+            
+            horizontalStack.heightAnchor.constraint(equalToConstant: 60),
             
             firstButton.heightAnchor.constraint(equalTo: horizontalStack.heightAnchor)
         ])
@@ -189,17 +201,18 @@ extension ViewController: ICustomButtonDelegate {
         self.monkImage.updateImage(buddhaData?.imageName ?? Texts.errorText)
         self.quoteLabel.text = buddhaData?.quote
         self.numberLabel.text = Texts.adviceNumber + "\(buddhaData?.number ?? -1)"
+        self.imageNameLabel.isHidden = true
     }
 }
 
 extension ViewController {
-    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let imageName = self.buddhaDataManager?.getCurrentBuddha().imageName ?? "Error"
-        let imagequote = self.buddhaDataManager?.getCurrentBuddha().quote ?? "Error"
-        if quoteLabel.text == imageName {
-            quoteLabel.text = imagequote
+        if imageNameLabel.isHidden {
+            imageNameLabel.text = imageName
+            imageNameLabel.isHidden = false
         } else {
-            quoteLabel.text = imageName
+            imageNameLabel.isHidden = true
         }
         super.touchesBegan(touches, with: event)
     }
