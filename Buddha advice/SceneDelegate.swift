@@ -19,10 +19,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let buddhaManager = BuddhaManager()
         let buddhaDataManager = BuddhaDataManager(buddhas: buddhaManager.getData())
+        let findImageViewController = FindImageViewController()
         let viewController = ViewController()
         viewController.buddhaDataManager = buddhaDataManager
+        findImageViewController.buddhaDataManager = buddhaDataManager
         
-        window?.rootViewController = viewController
+        window?.rootViewController = findImageViewController
         window?.makeKeyAndVisible()
     }
 

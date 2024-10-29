@@ -107,9 +107,11 @@ extension ViewController {
         horizontalStack.spacing = 10
         horizontalStack.alignment = .fill
         
-        horizontalStack.addArrangedSubview(lastButton)
-        horizontalStack.addArrangedSubview(randomButton)
-        horizontalStack.addArrangedSubview(nextButton)
+        horizontalStack.addMultipleArrangedSubviews([
+            lastButton,
+            randomButton,
+            nextButton
+        ])
     }
     
     private func setupMainStack() {
@@ -118,12 +120,14 @@ extension ViewController {
         mainStack.spacing = 10
         mainStack.alignment = .fill
         
-        mainStack.addArrangedSubview(numberLabel)
-        mainStack.addArrangedSubview(monkImage)
-        mainStack.addArrangedSubview(imageNameLabel)
-        mainStack.addArrangedSubview(quoteLabel)
-        mainStack.addArrangedSubview(horizontalStack)
-        mainStack.addArrangedSubview(firstButton)
+        mainStack.addMultipleArrangedSubviews([
+            numberLabel,
+            monkImage,
+            imageNameLabel,
+            quoteLabel,
+            horizontalStack,
+            firstButton
+        ])
     }
     
     private func setupDelegate() {
@@ -132,17 +136,31 @@ extension ViewController {
         randomButton.delegate = self
         nextButton.delegate = self
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let imageName = self.buddhaDataManager?.getCurrentBuddha().imageName ?? "Error"
+        if imageNameLabel.isHidden {
+            imageNameLabel.text = imageName
+            imageNameLabel.isHidden = false
+        } else {
+            imageNameLabel.isHidden = true
+        }
+        super.touchesBegan(touches, with: event)
+    }
 }
 
 // MARK: - Setup Layout
 extension ViewController {
     private func setupLayout() {
-        mainStack.translatesAutoresizingMaskIntoConstraints = false
-        monkImage.translatesAutoresizingMaskIntoConstraints = false
-        quoteLabel.translatesAutoresizingMaskIntoConstraints = false
-        imageNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        horizontalStack.translatesAutoresizingMaskIntoConstraints = false
-        firstButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addMultipletranslatesAutoresizingMaskIntoConstraints([
+            mainStack,
+            monkImage,
+            quoteLabel,
+            imageNameLabel,
+            horizontalStack,
+            firstButton
+        ])
         
         NSLayoutConstraint.activate([
             mainStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
@@ -204,15 +222,3 @@ extension ViewController: ICustomButtonDelegate {
     }
 }
 
-extension ViewController {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let imageName = self.buddhaDataManager?.getCurrentBuddha().imageName ?? "Error"
-        if imageNameLabel.isHidden {
-            imageNameLabel.text = imageName
-            imageNameLabel.isHidden = false
-        } else {
-            imageNameLabel.isHidden = true
-        }
-        super.touchesBegan(touches, with: event)
-    }
-}

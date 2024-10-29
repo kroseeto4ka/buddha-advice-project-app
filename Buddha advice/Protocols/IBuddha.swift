@@ -6,4 +6,5 @@ protocol IBuddha {
     func getPreviousBuddha() -> BuddhaModel
     func getFirstBuddha() -> BuddhaModel
     func getRandomBuddha() -> BuddhaModel
+    func getCertainBuddha(name: String?) -> BuddhaModel?
 }

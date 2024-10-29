@@ -54,5 +54,14 @@ class BuddhaDataManager: IBuddha {
     private func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
         array.sorted(by: <)
     }
+    
+    func getCertainBuddha(name: String?) -> BuddhaModel? {
+        for buddha in buddhas {
+            if name == buddha.imageName {
+                return buddha
+            }
+        }
+        return nil
+    }
 }
 
