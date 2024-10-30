@@ -5,7 +5,7 @@
 //  Created by Никита Сорочинский on 03.10.2024.
 //
 
-class BuddhaDataManager: IBuddha {
+class BuddhaDataManager {
     private var buddhas: [BuddhaModel] = []
     private var currentIndex = 0
     
@@ -18,6 +18,13 @@ class BuddhaDataManager: IBuddha {
         self.buddhas = sortedBuddhas
     }
     
+    private func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
+        array.sorted(by: <)
+    }
+}
+
+//MARK: - IBuddha
+extension BuddhaDataManager: IBuddha {
     func getCurrentBuddha() -> BuddhaModel {
         buddhas[currentIndex]
     }
@@ -51,10 +58,6 @@ class BuddhaDataManager: IBuddha {
         return getCurrentBuddha()
     }
     
-    private func sortBuddhas(_ array: [BuddhaModel]) -> [BuddhaModel] {
-        array.sorted(by: <)
-    }
-    
     func getCertainBuddha(name: String?) -> BuddhaModel? {
         for buddha in buddhas {
             if name == buddha.imageName {
@@ -64,4 +67,3 @@ class BuddhaDataManager: IBuddha {
         return nil
     }
 }
-

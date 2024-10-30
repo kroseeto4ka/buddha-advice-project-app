@@ -27,6 +27,10 @@ class FindImageViewController: UIViewController {
         setupLayout()
         setupDelegate()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.setupAction(textField.text)
+    }
 }
 
 //MARK: - Setup View
@@ -39,9 +43,6 @@ extension FindImageViewController {
         setupQuoteLabel()
         
         view.backgroundColor = .white
-        
-        view.addSubview(statusLabel)
-        view.addSubview(textField)
     }
     
     private func setupStatusLabel() {
@@ -50,12 +51,16 @@ extension FindImageViewController {
         statusLabel.font = .systemFont(ofSize: 22, weight: .bold)
         statusLabel.textAlignment = .center
         statusLabel.numberOfLines = 2
+        
+        view.addSubview(statusLabel)
     }
     
     private func setupTextField() {
         textField.backgroundColor = .systemGray4
         textField.placeholder = "Название картинки..."
         textField.borderStyle = .roundedRect
+        
+        view.addSubview(textField)
     }
     
     private func setupSearchButton() {
@@ -64,6 +69,7 @@ extension FindImageViewController {
     
     private func setupMonkImage() {
         monkImage.isHidden = true
+        
         view.addSubview(monkImage)
     }
     
@@ -82,20 +88,18 @@ extension FindImageViewController {
         self.searchButton.delegate = self
         self.textField.delegate = self
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.setupAction(textField.text)
-    }
 }
 
 //MARK: - Setup Layout
 extension FindImageViewController {
     func setupLayout() {
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.translatesAutoresizingMaskIntoConstraints = false
-        monkImage.translatesAutoresizingMaskIntoConstraints = false
-        quoteLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addMultipletranslatesAutoresizingMaskIntoConstraints([
+            statusLabel,
+            textField,
+            searchButton,
+            monkImage,
+            quoteLabel
+        ])
         
         NSLayoutConstraint.activate([
             statusLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
@@ -133,13 +137,15 @@ extension FindImageViewController {
 extension FindImageViewController: ICustomButtonDelegate {
     func pressedButton(_ button: UIButton) {
         if button == self.searchButton {
-            self.setupAction(textField.text)
+            self.setupAction()
         }
     }
     
-    private func setupAction(_ buddhaName: String?) {
-        if let name = buddhaName {
+    private func setupAction() {
+        if let name = textField.text {
             if let certainBuddha = buddhaDataManager!.getCertainBuddha(name: name) {
+                self.textField.resignFirstResponder()
+                
                 self.monkImage.updateImage(certainBuddha.imageName)
                 self.monkImage.isHidden = false
                 
@@ -162,8 +168,7 @@ extension FindImageViewController: ICustomButtonDelegate {
 //MARK: - UITextFieldDelegate
 extension FindImageViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.setupAction(textField.text)
-        self.textField.resignFirstResponder()
+        self.setupAction()
         return true
     }
 }
