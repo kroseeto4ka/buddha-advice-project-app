@@ -22,12 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let findImageViewController = FindImageViewController()
         let panImageViewController = PanImageViewController()
+        let licenseAgreementViewController = LicenseAgreementViewController()
         let viewController = ViewController()
         
         viewController.buddhaDataManager = buddhaDataManager
         findImageViewController.buddhaDataManager = buddhaDataManager
+        licenseAgreementViewController.license = LicenceManager()
         
-        window?.rootViewController = panImageViewController
+        window?.rootViewController = licenseAgreementViewController
         window?.makeKeyAndVisible()
     }
 

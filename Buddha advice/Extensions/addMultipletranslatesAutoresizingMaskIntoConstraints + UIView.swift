@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    func addMultipletranslatesAutoresizingMaskIntoConstraints(_ views: [UIView]) {
+    func addMultipleTranslatesAutoresizingMaskIntoConstraints(_ views: [UIView]) {
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
         }

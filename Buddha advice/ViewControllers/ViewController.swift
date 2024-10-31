@@ -153,7 +153,7 @@ extension ViewController {
 extension ViewController {
     private func setupLayout() {
         
-        view.addMultipletranslatesAutoresizingMaskIntoConstraints([
+        view.addMultipleTranslatesAutoresizingMaskIntoConstraints([
             mainStack,
             monkImage,
             quoteLabel,

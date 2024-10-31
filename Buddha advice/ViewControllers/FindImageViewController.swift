@@ -29,7 +29,7 @@ class FindImageViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.setupAction(textField.text)
+        self.setupAction()
     }
 }
 
@@ -93,7 +93,7 @@ extension FindImageViewController {
 //MARK: - Setup Layout
 extension FindImageViewController {
     func setupLayout() {
-        view.addMultipletranslatesAutoresizingMaskIntoConstraints([
+        view.addMultipleTranslatesAutoresizingMaskIntoConstraints([
             statusLabel,
             textField,
             searchButton,
