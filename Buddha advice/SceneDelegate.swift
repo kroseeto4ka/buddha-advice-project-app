@@ -17,19 +17,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         
-        let buddhaManager = BuddhaManager()
-        let buddhaDataManager = BuddhaDataManager(buddhas: buddhaManager.getData())
+        
+        let licenceManager = LicenceManager()
+        
         
         let findImageViewController = FindImageViewController()
         let panImageViewController = PanImageViewController()
         let licenseAgreementViewController = LicenseAgreementViewController()
         let viewController = ViewController()
+        let imageListViewController = ImageListViewController()
         
-        viewController.buddhaDataManager = buddhaDataManager
-        findImageViewController.buddhaDataManager = buddhaDataManager
-        licenseAgreementViewController.license = LicenceManager()
+        viewController.buddhaDataManager = buildProductManager()
+        findImageViewController.buddhaDataManager = buildProductManager()
+        imageListViewController.buddhaDataManager = buildProductManager()
+        licenseAgreementViewController.license = licenceManager
         
-        window?.rootViewController = licenseAgreementViewController
+        window?.rootViewController = imageListViewController
         window?.makeKeyAndVisible()
     }
 
@@ -62,5 +65,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
+}
+
+extension SceneDelegate {
+    func buildProductManager() -> IBuddha {
+        let buddhaManager = BuddhaManager()
+        let buddhaDataManager = BuddhaDataManager(buddhas: buddhaManager.getData())
+        
+        return buddhaDataManager
+    }
 }
 

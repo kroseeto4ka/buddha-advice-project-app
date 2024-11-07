@@ -6,7 +6,7 @@
 //
 
 class BuddhaDataManager {
-    private var buddhas: [BuddhaModel] = []
+    var buddhas: [BuddhaModel] = []
     private var currentIndex = 0
     
     init(buddhas: [BuddhaModel]) {
@@ -65,5 +65,17 @@ extension BuddhaDataManager: IBuddha {
             }
         }
         return nil
+    }
+    
+    func getBuddhas() -> [BuddhaModel] {
+        buddhas
+    }
+    
+    func changeMark(index: Int) {
+        buddhas[index].isMark = !buddhas[index].isMark
+    }
+    
+    func removeBuddha(index: Int) {
+        buddhas.remove(at: index)
     }
 }
