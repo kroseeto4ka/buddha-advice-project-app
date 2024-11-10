@@ -10,7 +10,8 @@ class BuddhaManager: IBuddhaManager {
         return [
             BuddhaModel(imageName: Images.image8,
                         quote: Quotes.quote8,
-                        number: 8),
+                        number: 8,
+                        isMark: true),
             BuddhaModel(imageName: Images.image9,
                         quote: Quotes.quote9,
                         number: 9),

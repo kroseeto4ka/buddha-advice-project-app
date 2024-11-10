@@ -21,7 +21,7 @@ class ImageListViewController: UIViewController {
 
 //MARK: - Setup View
 extension ImageListViewController {
-    func setupView() {
+    private func setupView() {
         view.backgroundColor = .red
         
         view.addSubview(tableView)
@@ -29,7 +29,7 @@ extension ImageListViewController {
         setupLayout()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.backgroundColor = .white
         
         tableView.dataSource = self
@@ -40,7 +40,7 @@ extension ImageListViewController {
 
 //MARK: - Setup Layout
 extension ImageListViewController {
-    func setupLayout() {
+    private func setupLayout() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -65,7 +65,7 @@ extension ImageListViewController: UITableViewDataSource {
         let monkImage = UIImage(named: buddha?.imageName ?? "")
         
         if buddha?.isMark == true {
-            cell.accessoryType = .checkmark
+                cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
         }
