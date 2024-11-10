@@ -53,7 +53,7 @@ class MarTableViewController: UITableViewController {
 
 //MARK: - Setup view
 extension MarTableViewController {
-    func setupView() {
+    private func setupView() {
         tableView.register(CustomCellView.self, forCellReuseIdentifier: cellIdentifier)
         tableView.backgroundColor = .white
     }
