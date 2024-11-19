@@ -13,6 +13,10 @@ class CustomCellView: UITableViewCell {
     
     private let checkboxButton = UIButton()
     
+    private var toggleCheckbox = false
+    
+    var action: (() -> ())?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
@@ -23,14 +27,32 @@ class CustomCellView: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc
+    private func actionButtonTapped() {
+        toggleCheckbox.toggle()
+        
+        let checkbox: String
+        
+        if toggleCheckbox {
+            checkbox = "checkmark.square.fill"
+            setupCheckboxButton(.red)
+        } else {
+            checkbox = "checkmark.square"
+            setupCheckboxButton(.black)
+        }
+        checkboxButton.setImage(UIImage(systemName: checkbox), for: .normal)
+        action?()
+    }
+    
     func configure(buddha: BuddhaModel) {
         buddhaName.text = buddha.imageName
         buddhaQuote.text = buddha.quote
         monkImage.image = UIImage(named: buddha.imageName)
+        toggleCheckbox = buddha.isMark
         
         let checkbox: String
         
-        if buddha.isMark {
+        if toggleCheckbox {
             checkbox = "checkmark.square.fill"
             setupCheckboxButton(.red)
         } else {
@@ -82,6 +104,8 @@ extension CustomCellView {
     
     private func setupCheckboxButton(_ color: UIColor) {
         checkboxButton.tintColor = color
+        
+        checkboxButton.addTarget(self, action: #selector(actionButtonTapped), for: .touchUpInside)
     }
 }
 

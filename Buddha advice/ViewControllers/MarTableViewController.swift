@@ -16,7 +16,7 @@ class MarTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        buddhaDataManager?.getBuddhas().count ?? 0
+        buddhaDataManager?.getMarkedBuddhas().count ?? 0
     }
     
     override func tableView(
@@ -30,9 +30,18 @@ class MarTableViewController: UITableViewController {
             return UITableViewCell()
         }
         
-        let buddha = (buddhaDataManager?.getBuddhas()[indexPath.row])!
+        let buddha = (buddhaDataManager?.getMarkedBuddhas()[indexPath.row])!
         
         cell.configure(buddha: buddha)
+        
+        cell.action = {
+            if let indexPath = tableView.indexPath(for: cell) {
+                if let buddha = self.buddhaDataManager?.getMarkedBuddhas()[indexPath.row]{
+                    self.buddhaDataManager?.toggleMarked(buddha)
+                    tableView.deleteRows(at: [indexPath], with: .automatic)
+                }
+            }
+        }
         
         return cell
     }
@@ -43,12 +52,6 @@ class MarTableViewController: UITableViewController {
     ) -> CGFloat {
         100
     }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.buddhaDataManager?.changeMark(index: indexPath.row)
-        
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
 }
 
 //MARK: - Setup view
@@ -56,5 +59,9 @@ extension MarTableViewController {
     private func setupView() {
         tableView.register(CustomCellView.self, forCellReuseIdentifier: cellIdentifier)
         tableView.backgroundColor = .white
+    }
+    
+    private func setupButton() {
+        
     }
 }

@@ -9,7 +9,7 @@ struct BuddhaModel {
     let imageName: String
     let quote: String
     let number: Int
-    var isMark = false
+    var isMark = true
 }
 
 // MARK: - Comparable

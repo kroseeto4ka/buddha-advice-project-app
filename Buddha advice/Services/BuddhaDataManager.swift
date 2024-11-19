@@ -71,11 +71,26 @@ extension BuddhaDataManager: IBuddha {
         buddhas
     }
     
+    func getMarkedBuddhas() -> [BuddhaModel] {
+            var markedBuddhas: [BuddhaModel] = []
+            for buddha in buddhas {
+                if buddha.isMark {
+                    markedBuddhas.append(buddha)
+                }
+            }
+            return markedBuddhas
+        }
     func changeMark(index: Int) {
         buddhas[index].isMark = !buddhas[index].isMark
     }
     
     func removeBuddha(index: Int) {
         buddhas.remove(at: index)
+    }
+    
+    func toggleMarked(_ buddha: BuddhaModel) {
+        if let index = buddhas.firstIndex(of: buddha) {
+            buddhas[index].isMark.toggle()
+        }
     }
 }
