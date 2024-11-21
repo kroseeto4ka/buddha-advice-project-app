@@ -32,6 +32,8 @@ class MarTableViewController: UITableViewController {
         
         let buddha = (buddhaDataManager?.getMarkedBuddhas()[indexPath.row])!
         
+        cell.selectionStyle = .none
+        
         cell.configure(buddha: buddha)
         
         cell.action = {
@@ -59,9 +61,5 @@ extension MarTableViewController {
     private func setupView() {
         tableView.register(CustomCellView.self, forCellReuseIdentifier: cellIdentifier)
         tableView.backgroundColor = .white
-    }
-    
-    private func setupButton() {
-        
     }
 }
