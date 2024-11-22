@@ -34,9 +34,7 @@ class MarTableViewController: UITableViewController {
         
         cell.selectionStyle = .none
         
-        cell.configure(buddha: buddha)
-        
-        cell.action = {
+        cell.action = { cell in
             if let indexPath = tableView.indexPath(for: cell) {
                 if let buddha = self.buddhaDataManager?.getMarkedBuddhas()[indexPath.row]{
                     self.buddhaDataManager?.toggleMarked(buddha)
@@ -45,6 +43,8 @@ class MarTableViewController: UITableViewController {
             }
         }
         
+        cell.configure(buddha: buddha)
+        
         return cell
     }
     
@@ -52,7 +52,7 @@ class MarTableViewController: UITableViewController {
         _ tableView: UITableView,
         heightForRowAt indexPath: IndexPath
     ) -> CGFloat {
-        100
+        150
     }
 }
 
